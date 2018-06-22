@@ -18,10 +18,28 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication)
 			throws IOException, ServletException {
+		
+		System.out.println("================== successful auth ==================");
+		
+		//authentication.getName();
+		//authentication.getCredentials();
+		
 		 if (authentication != null) {
+			 String authUrl="";
 			 try
 			 {
-			 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/"+authentication.getName());
+				 if(authentication.getName().equalsIgnoreCase("admin"))
+				 {
+					 authUrl = "admin";
+					 System.out.println("authUrl = \"admin\"");
+				 }
+				 else
+				 {
+					 authUrl = "user";
+					 System.out.println("authUrl = \"user\"");
+				 }
+				 
+			 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/"+authUrl);
 			 }
 			 catch (Exception e) {
 					e.printStackTrace();

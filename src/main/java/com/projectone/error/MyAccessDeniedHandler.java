@@ -23,6 +23,8 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpServletRequest,
                        HttpServletResponse httpServletResponse,
                        AccessDeniedException e) throws IOException, ServletException {
+    	
+    	System.out.println("================== Failed auth ==================");
 
         Authentication auth
                 = SecurityContextHolder.getContext().getAuthentication();

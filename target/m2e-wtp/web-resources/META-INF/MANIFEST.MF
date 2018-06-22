@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: ProjectOne
+Implementation-Version: 1
+Built-By: subhash
+Implementation-Vendor-Id: com.projectone
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/ProjectSprin
+ gBoot/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: com.projectone.SpringBootWebApplication
+
