@@ -1,8 +1,0 @@
-com\projectone\SpringBootWebApplication.class
-com\projectone\controller\DefaultController.class
-com\projectone\config\SpringSecurityConfig.class
-com\projectone\model\UserRegisterationDetails.class
-com\projectone\database\jpa\UserTableRepository.class
-com\projectone\authsuccess\SimpleAuthenticationSuccessHandler.class
-com\projectone\error\MyAccessDeniedHandler.class
-com\projectone\config\MyAppUserDetailsService.class
