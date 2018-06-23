@@ -24,7 +24,6 @@ public class UserRegisterationDetails {
     private String zipCode;
     private String country;
     private String password;
-
     
     
     public UserRegisterationDetails() {}

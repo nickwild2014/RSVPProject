@@ -4,9 +4,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projectone.database.jpa.UserTableRepository;
 import com.projectone.model.UserRegisterationDetails;
@@ -60,11 +62,18 @@ public class DefaultController {
         return "accountCreation";
     }
     
+    @GetMapping("/admin/registeredUsers")
+    public String registeredUsers(Model model) {
+    	List<UserRegisterationDetails> obj = userTableRepository.findAll();
+        model.addAttribute("usertableobj", obj);
+        return "table";
+        
+    }
+    
     
     @PostMapping("/admin/userRegisterationDetails")
-    public String greetingSubmit(@ModelAttribute UserRegisterationDetails userRegisterationDetailsOne,Model model) {
-    	
-    	
+    public String greetingSubmit(@ModelAttribute UserRegisterationDetails userRegisterationDetailsOne,
+    		BindingResult result, RedirectAttributes redirectAttributes,Model model) {
     	System.out.println("userRegisterationDetails ====="+userRegisterationDetailsOne.getName());
     	System.out.println("userRegisterationDetails getEmail ====="+userRegisterationDetailsOne.getEmail());
     	System.out.println("userRegisterationDetails getPhoneNumber ====="+userRegisterationDetailsOne.getPhoneNumber());
@@ -76,6 +85,8 @@ public class DefaultController {
     	System.out.println("userRegisterationDetails getGender ====="+userRegisterationDetailsOne.getGender());
     	System.out.println("userRegisterationDetails getCountry ====="+userRegisterationDetailsOne.getCountry());
     	System.out.println("userRegisterationDetails getPassword ====="+userRegisterationDetailsOne.getPassword());
+    	
+    
     	
 //    	List<UserTable> obj = userTableRepository.findByEmailAddress("Bauer","Jack");
 //        StringBuilder sb = new StringBuilder();
@@ -92,7 +103,6 @@ public class DefaultController {
     		model.addAttribute("accountCreation", obj);
             return "accountCreation";
     	}
-    	
     	userTableRepository.save(new UserRegisterationDetails(userRegisterationDetailsOne.getName(), 
     			userRegisterationDetailsOne.getEmail(),
     			userRegisterationDetailsOne.getPhoneNumber(), 
@@ -101,7 +111,14 @@ public class DefaultController {
     			userRegisterationDetailsOne.getState(), userRegisterationDetailsOne.getZipCode(), 
     			userRegisterationDetailsOne.getCountry(),userRegisterationDetailsOne.getPassword()));
     	
+    	model.addAttribute("accountCreation", new UserRegisterationDetails());
     	
-        return "result";
+    	System.out.println("result.getFieldError() "+result.getFieldError());
+   	    //redirectAttributes.addAttribute("message", "Success");
+   	    //redirectAttributes.addAttribute("alertClass", "alert-success");
+   	    model.addAttribute("message", "Success");
+    	return "accountCreation";
+    	
+        //return "result";
     }
 }

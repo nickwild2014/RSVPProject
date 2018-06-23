@@ -14,13 +14,12 @@ import com.projectone.authsuccess.SimpleAuthenticationSuccessHandler;
 // Switch off the Spring Boot security configuration
 //@EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
+    
+	@Autowired
     private AccessDeniedHandler accessDeniedHandler;
     
     @Autowired
     private SimpleAuthenticationSuccessHandler successHandler;
-
     // roles admin allow to access /admin/**
     // roles user allow to access /user/**
     // custom 403 access denied handler

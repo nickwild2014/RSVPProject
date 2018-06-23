@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Studentlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <div th:replace="fragments/header1 :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header1 :: header1"/>
+		<h1>UserList</h1>
+	<br/>
+	<!-- <div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div> -->	
+	<!-- <p th:text="'name1: ' + ${usertableobj.size()==0}" /> -->
+	<div class="row" align="center" th:if="${usertableobj.size()==0}">
+			<div class="alert alert-danger" >No Users Found. Please Create User Accounts!</div>
+	</div>
+    <table class="table table-striped">
+		<tr>
+		    <th>NAME</th>
+                <th>PASSWORD</th>
+                <th>PHONE_NUMBER</th>
+                <th>DATE_OF_BIRTH</th>
+                <th>EMAIL</th>
+                <th>GENDER</th>
+                <th>ADDRESS</th>
+                <th>CITY</th>
+                <th>STATE</th>
+                <th>ZIP_CODE</th>
+                <th>COUNTRY</th>
+		</tr>  
+    	<tr th:each="usertableobj : ${usertableobj}">
+                <td th:text="${usertableobj?.name}"></td>
+                <td th:text="${usertableobj?.password}"></td>
+                <td th:text="${usertableobj?.phoneNumber}"></td>
+                <td th:text="${usertableobj?.dateOfBirth}"></td>
+                <td th:text="${usertableobj?.email}"></td>
+                <td th:text="${usertableobj?.gender}"></td>
+                <td th:text="${usertableobj?.address}"></td>
+                <td th:text="${usertableobj?.city}"></td>
+                <td th:text="${usertableobj?.state}"></td>
+                <td th:text="${usertableobj?.zipCode}"></td>
+                <td th:text="${usertableobj?.country}"></td>
+            </tr>
+     </table>
+	   <!-- <a href="/add" class="btn btn-primary">Add Todo</a> -->    	     
+	</body>
+</html>

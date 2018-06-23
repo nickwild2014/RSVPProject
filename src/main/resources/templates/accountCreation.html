@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>User Registration Form Flat Responsive widget Template :: w3layouts</title>
+<title>User Registration Form</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css files -->
@@ -14,12 +14,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
  <link rel="stylesheet" th:href="@{/css/jquery-ui.css}"  href="../../css/jquery-ui.css"/>
 <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
 <!-- stylesheet-css -->
-<link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet"/>
+ <link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet"/>
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet"/>
-
+ 
 <!-- //css files -->
+<div th:replace="fragments/header1 :: header-css"/>
 </head>
 <body>
+<div th:replace="fragments/header1 :: header1"/>
+
+
 	<h1>User Registration Form</h1>
 	
 	<!-- <div th:if="${userRegisterationDetails.name !=null}">
@@ -30,11 +34,17 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		alert("you can not create admin user again");
 	</script>
 	</div>
-	<!-- <p th:text="'name2: ' + ${accountCreation.name}" /> -->
+	
+	<div th:if="${message == 'Success'}">
+	<script>
+		alert("User Has been successfully saved");
+	</script>
+	</div>
+	<!-- <p th:text="'id: ' + ${message}" /> -->
 <div class="w3l-main">
 	<div class="w3l-from">
 	
-		<form action="#" th:action="@{/admin/userRegisterationDetails}" th:object="${accountCreation}" method="post">	
+		<form action="#" th:action="@{/admin/userRegisterationDetails}" th:object="${accountCreation}" method="post">
 			<div class="w3l-user">
 				<label class="head">Name<span class="w3l-star"> * </span></label>
 				<input type="text" th:field="*{name}" name="" placeholder="" required=""/>
@@ -46,13 +56,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="clear"></div>
 			<div class="w3l-mail">
 				<label class="head">Email<span class="w3l-star"> * </span></label>
-				<input type="email" th:field="*{email}" name="email" placeholder="" /><!-- required=""/> -->
+				<input type="email" th:field="*{email}" name="email" placeholder="" required="" /><!-- required=""/> -->
 			</div>
 			<div class="clear"></div>
 			<div class="w3l-details1">
 				<div class="w3l-num">
 					<label class="head">Phone Number<span class="w3l-star"> * </span></label>
-					<input type="text" th:field="*{phoneNumber}"  name="phone number" placeholder="" /><!-- required=""/> -->
+					<input type="text" th:field="*{phoneNumber}"  name="phone number" placeholder="" required=""  /><!-- required=""/> -->
 				</div>
 				<div class="w3l-date">
 					<label class="head">Birth Date<span class="w3l-star"> * </span></label>
@@ -64,7 +74,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="clear"></div>
 			<div class="gender">
 				<label class="head">gender<span class="w3l-star"> * </span></label>	
-					<select class="form-control" th:field="*{gender}">
+					<select class="form-control" th:field="*{gender}"  required="" >
 						<option value=""></option>
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
@@ -74,24 +84,24 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>
 			<div class="w3l-user">
 				<label class="head">Street Address<span class="w3l-star"> * </span></label>
-				<input type="text" th:field="*{address}" name="Address" placeholder="" /><!-- required=""/> -->
+				<input type="text" th:field="*{address}" name="Address" placeholder=""  required="" /><!-- required=""/> -->
 			</div>
 			<div class="w3l-num">
 					<label class="head">City<span class="w3l-star"> * </span></label>
-					<input type="text" th:field="*{city}"  name="City" placeholder="" /><!-- required=""/> -->
+					<input type="text" th:field="*{city}"  name="City" placeholder=""  required="" /><!-- required=""/> -->
 				</div>
 			<div class="w3l-sym">
 					<label class="head">State<span class="w3l-star"> * </span></label>
-					<input type="text"  th:field="*{state}"  name="State" placeholder="" /><!-- required=""/> -->
+					<input type="text"  th:field="*{state}"  name="State" placeholder=""  required="" /><!-- required=""/> -->
 			</div>
 			<div class="clear"></div>
 			<div class="w3l-num">
 					<label class="head">Postal / Zip Code<span class="w3l-star"> * </span></label>
-					<input type="text"  th:field="*{zipCode}"  name="Postal / Zip Code" placeholder="" /><!-- required=""/> -->
+					<input type="text"  th:field="*{zipCode}"  name="Postal / Zip Code" placeholder=""  required="" /><!-- required=""/> -->
 				</div>
 			<div class="w3l-options2">
 			<label class="head">Country<span class="w3l-star"> * </span></label>	
-				<select class="category2" th:field="*{country}"> <!-- required=""> -->
+				<select class="category2" th:field="*{country}" required="" > <!-- required=""> -->
 						<option value=""></option>
 						<option value="India">India</option>
 						<option value="OtherCountry">Other</option>
