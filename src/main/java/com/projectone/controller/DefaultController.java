@@ -27,6 +27,9 @@ public class DefaultController {
 	
     @GetMapping("/")
     public String home1() {
+    	System.out.println("login happenned");
+    	System.out.println("login happenned");
+    	System.out.println("login happenned");
         return "/login";
     }
 
